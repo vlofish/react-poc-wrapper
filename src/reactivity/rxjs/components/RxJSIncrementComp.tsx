@@ -1,5 +1,11 @@
+import { operationType } from '../utils/subject-manager-instances'
+
 function RxJSIncrementComp() {
-  return <button> Increment </button>
+  const handleClick = () => {
+    operationType.subjectValue = 'increment'
+  }
+
+  return <button onClick={handleClick}> Increment </button>
 }
 
 export default RxJSIncrementComp

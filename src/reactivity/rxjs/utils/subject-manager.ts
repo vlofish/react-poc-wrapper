@@ -7,7 +7,7 @@ export class SubjectManager {
     return this.subject$.asObservable()
   }
 
-  set subjectValue(value: number) {
+  set subjectValue(value: string) {
     this.subject$.next(value)
   }
 }
