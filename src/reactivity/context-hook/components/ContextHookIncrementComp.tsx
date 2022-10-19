@@ -1,9 +1,11 @@
 import plusIcon from '../../assets/plus-icon.svg'
+import { GetOperationContext } from '../utils/operation-context'
 
 function ContextHookIncrementComp() {
+  const { incrementDecrement } = GetOperationContext()
   return (
-    <button>
-      <img src={plusIcon} alt="Plus icon" />
+    <button onClick={() => incrementDecrement('increment')}>
+      <img src={plusIcon} alt="Minus icon" />
     </button>
   )
 }
