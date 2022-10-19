@@ -1,6 +1,6 @@
 import { map } from 'rxjs'
 import { useEffect, useState } from 'react'
-import { incrementDecrement } from '../utils/operations'
+import { incrementDecrement } from '../../common/operations'
 import { operationType } from '../utils/subject-manager-instances'
 
 function RxJSResultComp() {
@@ -15,7 +15,7 @@ function RxJSResultComp() {
       .subscribe((newValue: number) => setState(newValue))
 
     // TODO: unsubscribe from BehaviorSubject as Observable
-    return () => console.log('Check if operation$ should be destroyed?')
+    return () => console.log('Check if operation$ should be destroyed')
   })
 
   return <p> Value: {state}</p>

@@ -1,23 +1,16 @@
 /* ======= ======= ======= ======= ======= */
 import { useEffect, useState } from 'react'
 import { OperationContext, defaultOperationContext } from './operation-context'
+import { incrementDecrement } from '../../common/operations'
 /* ======= ======= ======= ======= ======= */
 
 export function OperationContextProvider({ children }: any) {
   const [contextState, setContextState] = useState(defaultOperationContext)
 
-  const incrementDecrement = (operation: string) => {
+  const incrementDecrement2 = (operation: string) => {
     let { value } = contextState
 
-    switch (operation) {
-      case 'increment':
-        value++
-        break
-
-      case 'decrement':
-        value--
-        break
-    }
+    value = incrementDecrement(operation, value)
 
     setContextState({
       ...contextState,
@@ -30,7 +23,7 @@ export function OperationContextProvider({ children }: any) {
 
     setContextState({
       value,
-      incrementDecrement: incrementDecrement
+      incrementDecrement: incrementDecrement2
     })
   }, [contextState.value])
 

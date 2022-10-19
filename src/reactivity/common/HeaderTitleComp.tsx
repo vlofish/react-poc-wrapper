@@ -1,4 +1,4 @@
-function HeaderTitleComp({ title }) {
+function HeaderTitleComp({ title }: { title: string }) {
   return (
     <header>
       <h3> {title} </h3>

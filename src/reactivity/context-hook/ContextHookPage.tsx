@@ -8,13 +8,6 @@ import ContextHookDecrementComp from './components/ContextHookDecrementComp'
 import { OperationContextProvider } from './utils/OperationContextProvider'
 /* ======= ======= ======= ======= ======= */
 
-/* const defaultOperationContext = {
-  value: 0,
-  incrementDecrement: () => console.error('Not yet implemented')
-}
-
-export const OperationContext = createContext(defaultOperationContext) */
-
 function ContextHookPage() {
   const borderStyle = {
     border: 'black 1px dotted'
