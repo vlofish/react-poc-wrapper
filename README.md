@@ -1,10 +1,8 @@
 # react-poc-wrapper
 
-Let's have an ordered source of trut for coding concepts with examples of JS and React
+Let's have an ordered source of trut for coding concepts, ideas, or isolated POCs.
 
 ## reactive-react
-
-Concepts Explored
 
 > RxJS
 > UseEffect Hook
