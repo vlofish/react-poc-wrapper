@@ -1,4 +1,5 @@
 import ContextHookPage from './context-hook/ContextHookPage'
+import ReduxPage from './redux/ReduxPage'
 import RxJSPage from './rxjs/RxJSPage'
 
 function ReactivityPage() {
@@ -9,6 +10,7 @@ function ReactivityPage() {
       </header>
       <RxJSPage />
       <ContextHookPage />
+      <ReduxPage />
     </section>
   )
 }
