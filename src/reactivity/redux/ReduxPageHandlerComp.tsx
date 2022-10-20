@@ -1,5 +1,5 @@
-function ReduxPageHandlerComp({ pageTitle }: { pageTitle: string }) {
-  return <button> {pageTitle} </button>
+function ReduxPageHandlerComp(props: { pageTitle: string; onClick: any }) {
+  return <button onClick={props.onClick}> {props.pageTitle} </button>
 }
 
 export default ReduxPageHandlerComp
