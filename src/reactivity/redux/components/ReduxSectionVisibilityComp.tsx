@@ -1,23 +1,21 @@
 /* ======= ======= ======= ======= ======= */
 import { useEffect, useState } from 'react'
-import { ActionName } from '../../../common/enums'
 import { store } from '../../../common/store'
+
+import { SectionName } from '../../common/enums'
+import { ActionName } from '../../../common/enums'
+import { defaultSectionVisibility } from '../../common/constants'
+
 import ReduxSectionVisibilityButtonComp from './ReduxSectionVisibilityButtonComp'
 /* ======= ======= ======= ======= ======= */
 
-enum SectionName {
-  RxJS = 'rxjs',
-  Context = 'contextHook'
+const sectionHidden = {
+  ...defaultSectionVisibility
 }
 
 const storeActionMap: any = {
   [SectionName.RxJS]: ActionName.HideRxJS,
   [SectionName.Context]: ActionName.HideContextHook
-}
-
-const sectionHidden: any = {
-  [SectionName.RxJS]: false,
-  [SectionName.Context]: false
 }
 
 function ReduxSectionVisibilityComp() {
@@ -35,7 +33,7 @@ function ReduxSectionVisibilityComp() {
       sectionHidden[SectionName.RxJS] = hideRxJSSection
       sectionHidden[SectionName.Context] = hideContextSection
     })
-  })
+  }, [])
 
   const updateButtonText = (sectionName: string) => {
     const currentButtonText = buttonText[sectionName]
