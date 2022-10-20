@@ -26,9 +26,9 @@ function ReactivityPage() {
       <header>
         <h2> Reactivity </h2>
       </header>
+      <ReduxPage />
       {state.hideRxJS ? null : <RxJSPage />}
       {state.hideContext ? null : <ContextHookPage />}
-      <ReduxPage />
     </section>
   )
 }
