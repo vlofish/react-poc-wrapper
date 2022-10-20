@@ -1,8 +1,8 @@
 import ContextHookPage from './context-hook/ContextHookPage'
 import ReduxPage from './redux/ReduxPage'
 import RxJSPage from './rxjs/RxJSPage'
-import { store } from '../store/store'
 import { useEffect, useState } from 'react'
+import { store } from '../common/store'
 
 function ReactivityPage() {
   const [state, setState] = useState({

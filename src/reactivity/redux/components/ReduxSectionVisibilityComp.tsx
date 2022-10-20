@@ -1,58 +1,71 @@
 /* ======= ======= ======= ======= ======= */
-import { useState } from 'react'
-import { store } from '../../../store/store'
+import { useEffect, useState } from 'react'
+import { ActionName } from '../../../common/enums'
+import { store } from '../../../common/store'
 import ReduxSectionVisibilityButtonComp from './ReduxSectionVisibilityButtonComp'
 /* ======= ======= ======= ======= ======= */
 
-const hiddenSectionsState: any = {
-  rxjs: false,
-  contextHook: false
+enum SectionName {
+  RxJS = 'rxjs',
+  Context = 'contextHook'
+}
+
+const storeActionMap: any = {
+  [SectionName.RxJS]: ActionName.HideRxJS,
+  [SectionName.Context]: ActionName.HideContextHook
+}
+
+const sectionHidden: any = {
+  [SectionName.RxJS]: false,
+  [SectionName.Context]: false
 }
 
 function ReduxSectionVisibilityComp() {
-  const [pageTitleState, setPageTitle]: any = useState({
-    rxjs: 'Hide RxJS Section',
-    contextHook: 'Hide Context-Hook Section'
+  const [buttonText, setButtonText]: any = useState({
+    [SectionName.RxJS]: 'Hide RxJS Section',
+    [SectionName.Context]: 'Hide Context-Hook Section'
   })
 
-  const updatePageTitle = (page: string) => {
-    let updatedPageTitle
-    const currentPageTitle = pageTitleState[page]
+  useEffect(() => {
+    // TODO: can i add an rxjs pipe here?
+    store.subscribe(() => {
+      const { hideRxJSSection, hideContextSection } = store.getState()
 
-    if (currentPageTitle.includes('Display')) {
-      updatedPageTitle = currentPageTitle.replace('Display', 'Hide')
-    } else {
-      updatedPageTitle = currentPageTitle.replace('Hide', 'Display')
-    }
+      // TODO: make this immutable
+      sectionHidden[SectionName.RxJS] = hideRxJSSection
+      sectionHidden[SectionName.Context] = hideContextSection
+    })
+  })
 
-    setPageTitle({
-      ...pageTitleState,
-      [page]: updatedPageTitle
+  const updateButtonText = (sectionName: string) => {
+    const currentButtonText = buttonText[sectionName]
+
+    const newText = currentButtonText.includes('Display')
+      ? currentButtonText.replace('Display', 'Hide')
+      : currentButtonText.replace('Hide', 'Display')
+
+    setButtonText({
+      ...buttonText,
+      [sectionName]: newText
     })
   }
 
   const dispatchSectionVisibility = (page: string) => {
-    const options: any = {
-      rxjs: 'section-hide/rxjs',
-      contextHook: 'section-hide/context-hook'
-    }
-
-    hiddenSectionsState[page] = !hiddenSectionsState[page]
-
-    store.dispatch({ type: `${options[page]}`, payload: hiddenSectionsState[page] })
+    sectionHidden[page] = !sectionHidden[page]
+    store.dispatch({ type: `${storeActionMap[page]}`, payload: sectionHidden[page] })
   }
 
   const handleClick = (page: string) => {
-    updatePageTitle(page)
+    updateButtonText(page)
     dispatchSectionVisibility(page)
   }
 
   return (
     <section>
-      <ReduxSectionVisibilityButtonComp pageTitle={pageTitleState.rxjs} onClick={() => handleClick('rxjs')} />
+      <ReduxSectionVisibilityButtonComp pageTitle={buttonText.rxjs} onClick={() => handleClick(SectionName.RxJS)} />
       <ReduxSectionVisibilityButtonComp
-        pageTitle={pageTitleState.contextHook}
-        onClick={() => handleClick('contextHook')}
+        pageTitle={buttonText.contextHook}
+        onClick={() => handleClick(SectionName.Context)}
       />
     </section>
   )

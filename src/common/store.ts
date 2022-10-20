@@ -1,15 +1,16 @@
 import { createStore } from 'redux'
+import { ActionName } from './enums'
 
-const defaultState = {
+const initialStoreState = {
   hideRxJSSection: false,
   hideContextSection: false
 }
 
-function sectionHideReducer(state = defaultState, action: { type: string; payload: any }) {
+function sectionHideReducer(state = initialStoreState, action: { type: string; payload: any }) {
   switch (action.type) {
-    case 'section-hide/rxjs':
+    case ActionName.HideRxJS:
       return { ...state, hideRxJSSection: action.payload }
-    case 'section-hide/context-hook':
+    case ActionName.HideContextHook:
       return { ...state, hideContextSection: action.payload }
     default:
       return state
