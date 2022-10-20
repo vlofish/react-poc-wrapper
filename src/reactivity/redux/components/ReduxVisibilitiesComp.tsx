@@ -6,7 +6,7 @@ import { SectionName } from '../../common/enums'
 import { ActionName } from '../../../common/enums'
 import { defaultSectionVisibility } from '../../common/constants'
 
-import ReduxSectionVisibilityButtonComp from './ReduxSectionVisibilityButtonComp'
+import ReduxVisibilityButtonComp from './ReduxVisibilityButtonComp'
 /* ======= ======= ======= ======= ======= */
 
 const sectionHidden = {
@@ -18,7 +18,7 @@ const storeActionMap: any = {
   [SectionName.Context]: ActionName.HideContextHook
 }
 
-function ReduxSectionVisibilityComp() {
+function ReduxVisibilitiesComp() {
   const [buttonText, setButtonText]: any = useState({
     [SectionName.RxJS]: 'Hide RxJS Section',
     [SectionName.Context]: 'Hide Context-Hook Section'
@@ -60,13 +60,10 @@ function ReduxSectionVisibilityComp() {
 
   return (
     <section>
-      <ReduxSectionVisibilityButtonComp pageTitle={buttonText.rxjs} onClick={() => handleClick(SectionName.RxJS)} />
-      <ReduxSectionVisibilityButtonComp
-        pageTitle={buttonText.contextHook}
-        onClick={() => handleClick(SectionName.Context)}
-      />
+      <ReduxVisibilityButtonComp pageTitle={buttonText.rxjs} onClick={() => handleClick(SectionName.RxJS)} />
+      <ReduxVisibilityButtonComp pageTitle={buttonText.contextHook} onClick={() => handleClick(SectionName.Context)} />
     </section>
   )
 }
 
-export default ReduxSectionVisibilityComp
+export default ReduxVisibilitiesComp

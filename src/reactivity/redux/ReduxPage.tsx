@@ -1,6 +1,6 @@
 /* ======= ======= ======= ======= ======= */
 import HeaderTitleComp from '../common/HeaderTitleComp'
-import ReduxSectionVisibilityComp from './components/ReduxSectionVisibilityComp'
+import ReduxVisibilitiesComp from './components/ReduxVisibilitiesComp'
 /* ======= ======= ======= ======= ======= */
 
 function ReduxPage() {
@@ -11,7 +11,7 @@ function ReduxPage() {
   return (
     <section style={borderStyle}>
       <HeaderTitleComp title="Display Sections via Redux" />
-      <ReduxSectionVisibilityComp />
+      <ReduxVisibilitiesComp />
       <br />
     </section>
   )
