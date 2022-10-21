@@ -5,5 +5,5 @@ Let's have an ordered source of trut for coding concepts, ideas, or isolated POC
 ## reactive-react
 
 > RxJS
-> UseEffect Hook
+> UseEffect-Hook
 > Redux
