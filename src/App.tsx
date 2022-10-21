@@ -1,11 +1,12 @@
-import "./App.css";
+import './App.css'
+import ReactivityPage from './reactivity/ReactivityPage'
 
 function App() {
   return (
     <div className="App">
-      <p> App Works </p>
+      <ReactivityPage />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
